@@ -2,7 +2,8 @@
 <flow xmlns="http://www.springframework.org/schema/webflow"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
-      http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd" start-state="loginForm">
+      http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
+      start-state="loginForm">
 
     <var name="user" class="biz.bagira.shds.User"/>
 
@@ -18,8 +19,6 @@
 <evaluate expression="userService.checkUser(user)"/>
         <transition on="success" to="mainContent"/>
         <transition on="failed" to="loginForm"/>
-
-
 
     </action-state>
     <view-state id="mainContent" view="main"/>

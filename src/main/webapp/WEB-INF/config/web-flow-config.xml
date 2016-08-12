@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+ <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns="http://www.springframework.org/schema/webflow-config"
              xsi:schemaLocation="http://www.springframework.org/schema/webflow-config
@@ -8,17 +7,23 @@
 		http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-<flow-executor id="loginFlowExecutor" flow-registry="loginFlowRegistry"/>
 
 
-    <flow-registry  id="loginFlowRegistry" flow-builder-services="flowBuilder" base-path="/WEB-INF/flows">
+<flow-executor id="loginFlowExecutor"
+               flow-registry="loginFlowRegistry"/>
+
+
+    <flow-registry  id="loginFlowRegistry"
+                    flow-builder-services="flowBuilder" base-path="/WEB-INF/flows">
             <flow-location-pattern value="*.xml"/>
     </flow-registry>
 
 
-    <flow-builder-services id="flowBuilder" view-factory-creator="viewFlowResolver"/>
+    <flow-builder-services id="flowBuilder"
+                           view-factory-creator="flowViewResolver"/>
 
-    <beans:bean id="viewFlowResolver" class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
+    <beans:bean id="flowViewResolver"
+                class="org.springframework.webflow.mvc.builder.MvcViewFactoryCreator">
 
 <beans:property name="viewResolvers">
 <beans:list>
