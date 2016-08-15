@@ -3,10 +3,10 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.springframework.org/schema/webflow
       http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd"
-    >
+    start-state="createUserForm">
 
-
-    <var name="user" class="biz.bagira.shds.User"/>
+     <input name="user"/>
+    <!--<var name="user" class="biz.bagira.shds.User"/>-->
     <view-state id="createUserForm" view="create-user" model="user">
         <transition on="submit" to="createUserAction" />
         <transition on="cancel" to="end" />
@@ -15,11 +15,17 @@
     <action-state id="createUserAction">
         <evaluate expression="userService.createUser(user)" />
 
-        <transition to="end" />
+        <transition on="success" to="userCreated" />
+        <transition on="failed" to="createUserForm" />
+
 
     </action-state>
 
     <end-state id="end" />
+    <end-state id="userCreated" >
+
+        <output name="user"/>
+    </end-state>
 
 
 
