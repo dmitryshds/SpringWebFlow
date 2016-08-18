@@ -5,7 +5,7 @@
   Time: 19:44
   To change this template use File | Settings | File Templates.
 --%>
-<%--<%@ page contentType="text/html;charset=UTF-8" language="java" %>--%>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
@@ -19,13 +19,32 @@
 <html>
 <head>
     <link href="<c:url value="/resources/home.css" />" rel="stylesheet">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
 
+    <link type="text/css"
+          href="<c:url value="/resources/dijit/themes/tundra/tundra.css" />"
+          rel="stylesheet" >
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Insert title here</title>
+    <script type="text/javascript"
+            src="<c:url value="/resources/dojo/dojo.js" />">
+
+    </script>
+
+    <script type="text/javascript"
+            src="<c:url value="/resources/spring/Spring.js" />">
+
+    </script>
+
+    <script type="text/javascript"
+            src="<c:url value="/resources/spring/Spring-Dojo.js" />">
+
+    </script>
 
 </head>
 
-<body>
+<body class="tundra">
 
 
 <form:form method="POST" modelAttribute="user"
@@ -34,19 +53,47 @@
 
     <fieldset class="boxBody">
 
+<span style="float: right"> <a href="?lang=en"><spring:message code="en"/></a> <a
+        href="?lang=ru"><spring:message code="ru"/></a>
+			</span>
 
-        <form:label path="name">
-            Username
+        <form:label path="username">
+            <spring:message code="username" />
         </form:label>
-        <form:input path="name"/>
+        <form:input path="username" id="username"/>
+        <script type="text/javascript">
+            Spring.addDecoration(new Spring.ElementDecoration({
+                elementId : "username",
+                widgetType : "dijit.form.ValidationTextBox",
+
+                widgetAttrs : {
+                    promptMessage : "<spring:message code="enter_username" />"
+                }
+            }));
+        </script>
+
+
 
 
         <form:label path="password">
-            Password
+            <spring:message code="password" />
         </form:label>
 
 
-        <form:password path="password"/>
+        <form:password path="password" id="password"/>
+
+        <script type="text/javascript">
+            Spring.addDecoration(new Spring.ElementDecoration({
+                elementId : "password",
+                widgetType : "dijit.form.ValidationTextBox",
+
+                widgetAttrs : {
+                    promptMessage : "<spring:message code="enter_password" />"
+                }
+            }));
+        </script>
+
+
 
         <c:if test="${not empty message}">
             <span style="float: right" class="error">${message}</span>
@@ -58,11 +105,11 @@
     <footer>
 
 
-        <a href="${flowExecutionUrl}&_eventId=createUser">New user</a>
+        <a href="${flowExecutionUrl}&_eventId=createUser"><spring:message code="create-user" /></a>
 
 
         <input type="submit" class="btnLogin"
-               value="Login" name="_eventId_submit">
+               value="<spring:message code="login"/>" username="_eventId_submit">
 
 
     </footer>

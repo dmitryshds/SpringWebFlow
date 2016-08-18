@@ -6,7 +6,7 @@
     start-state="createUserForm">
 
      <input name="user"/>
-    <!--<var name="user" class="biz.bagira.shds.User"/>-->
+    <!--<var username="user" class="biz.bagira.shds.User"/>-->
     <view-state id="createUserForm" view="create-user" model="user">
         <transition on="submit" to="createUserAction" />
         <transition on="cancel" to="end" />
@@ -15,9 +15,12 @@
     <action-state id="createUserAction">
         <evaluate expression="userService.createUser(user)" />
 
-        <transition on="success" to="userCreated" />
-        <transition on="failed" to="createUserForm" />
-
+        <transition on="yes" to="userCreated" >
+            <set name="flashScope.message" value="resourceBundle.userCreated"/>
+        </transition>
+        <transition on="no" to="createUserForm" >
+            <set name="flashScope.message" value="resourceBundle.userExist"/>
+</transition>
 
     </action-state>
 
@@ -27,7 +30,9 @@
         <output name="user"/>
     </end-state>
 
-
+<global-transitions>
+    <transition on-exception="java.lang.Exception" to="createUserForm"/>
+</global-transitions>
 
 
 </flow>

@@ -8,18 +8,18 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    private String name;
+    private String username;
     private String password;
 
     public User() {
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -37,14 +37,14 @@ public class User implements Serializable {
 
         User user = (User) o;
 
-        if (!name.equals(user.name)) return false;
+        if (!username.equals(user.username)) return false;
         return password.equals(user.password);
 
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
