@@ -12,21 +12,24 @@
         <transition on="createUser" to="createUserFlow"/>
     </view-state>
 
-<subflow-state id="createUserFlow" subflow="create-user">
-    <input name="user"/>
-    <transition on="userCreated" to="loginForm"/>
-    <transition on="end" to="loginForm"/>
-</subflow-state>
+    <subflow-state id="createUserFlow" subflow="create-user">
+        <input name="user"/>
+        <transition on="userCreated" to="loginForm"/>
+        <transition on="end" to="loginForm"/>
+    </subflow-state>
 
     <action-state id="actionCheckLogin">
-<evaluate expression="userService.checkUser(user)"/>
+        <evaluate expression="userService.checkUser(user)"/>
         <transition on="success" to="mainContent"/>
         <transition on="failed" to="loginForm">
-            <set name="flashScope.message" value="'Register please!'"/>
+            <set name="flashScope.message" value="resourceBundle.register"/>
         </transition>
 
     </action-state>
     <view-state id="mainContent" view="main"/>
 
+    <global-transitions>
+        <transition on-exception="java.lang.Exception" to="loginForm"/>
+    </global-transitions>
 
 </flow>

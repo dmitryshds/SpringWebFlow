@@ -14,9 +14,9 @@ private ConcurrentHashMap<String,User> userMap = new ConcurrentHashMap<String, U
 
     public UserService() {
         User user = new User();
-        user.setName("user");
+        user.setUsername("user");
         user.setPassword("pass");
-        userMap.put(user.getName(),user);
+        userMap.put(user.getUsername(),user);
     }
 
     public String checkUser(User user){
@@ -28,8 +28,10 @@ private ConcurrentHashMap<String,User> userMap = new ConcurrentHashMap<String, U
         else return "failed";
     }
 
-public void createUser(User user){
-
-    userMap.put(user.getName(),user);
+public boolean createUser(User user){
+   if (!userMap.containsKey(user.getUsername())) {
+       userMap.put(user.getUsername(), user);
+       return true;
+   }else return false;
 }
 }

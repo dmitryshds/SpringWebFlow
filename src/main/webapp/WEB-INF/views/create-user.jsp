@@ -41,7 +41,7 @@
 
 
         <form:label path="name">
-            Username
+            <spring:message code="username" />
         </form:label>
         <form:input path="name" />
 
@@ -50,14 +50,16 @@
 
 
         <form:label path="password">
-            Password
+            <spring:message code="password" />
         </form:label>
 
 
 
         <form:password path="password"/>
 
-
+        <c:if test="${not empty message}">
+            <span style="float: right" class="error">${message}</span>
+        </c:if>
     </fieldset>
 
     <footer>
@@ -65,11 +67,11 @@
 
 
         <input type="submit" class="btnLogin"
-               value="Cancel" name="_eventId_cancel">
+               value="<spring:message code="cancel" />" username="_eventId_cancel">
 
 
         <input type="submit" class="btnLogin"
-               value="Create" name="_eventId_submit">
+               value="<spring:message code="create" />" username="_eventId_submit">
 
 
 
