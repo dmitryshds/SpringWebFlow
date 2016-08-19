@@ -1,6 +1,9 @@
 package biz.bagira.shds;
 
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+
+
 
 /**
  * Created by Дмитрий on 09.08.2016.
@@ -8,7 +11,9 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    @Size(min = 6 , message = "{name.size.error}")
     private String username;
+    @Size(min = 5, max = 10, message = "{password.size.error}")
     private String password;
 
     public User() {

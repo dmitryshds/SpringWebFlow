@@ -3,36 +3,36 @@
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
 
     <!-- Appenders -->
-    <appender username="console" class="org.apache.log4j.ConsoleAppender">
-        <param username="Target" value="System.out" />
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
         <layout class="org.apache.log4j.PatternLayout">
-            <param username="ConversionPattern" value="%-5p: %c - %m%n" />
+            <param name="ConversionPattern" value="%-5p: %c - %m%n" />
         </layout>
     </appender>
 
     <!-- Application Loggers -->
-    <logger username="biz.bagira.shds">
+    <logger name="biz.bagira.shds">
         <level value="info" />
     </logger>
 
     <!-- 3rdparty Loggers -->
-    <logger username="org.springframework.core">
+    <logger name="org.springframework.core">
         <level value="info" />
     </logger>
 
-    <logger username="org.springframework.beans">
+    <logger name="org.springframework.beans">
         <level value="info" />
     </logger>
 
-    <logger username="org.springframework.context">
+    <logger name="org.springframework.context">
         <level value="info" />
     </logger>
 
-    <logger username="org.springframework.web">
+    <logger name="org.springframework.web">
         <level value="info" />
     </logger>
 
-    <logger username="org.springframework.webflow">
+    <logger name="org.springframework.webflow">
         <level value="debug" />
     </logger>
 
