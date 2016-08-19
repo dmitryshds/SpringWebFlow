@@ -13,7 +13,7 @@
 
 
     <flow-registry id="loginFlowRegistry"
-                   flow-builder-services="flowBuilder" base-path="/WEB-INF/flows">
+                   flow-builder-services="flowBuilder" base-path="/WEB-INF/flows/">
         <flow-location-pattern value="*.xml"/>
     </flow-registry>
 

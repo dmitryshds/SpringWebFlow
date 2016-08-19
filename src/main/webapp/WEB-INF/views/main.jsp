@@ -23,5 +23,7 @@
 
 <h1><spring:message code="success"/></h1>
 
+<h3><a href="downloadPDF"><spring:message code="secret"/></a></h3>
+
 </body>
 </html>
