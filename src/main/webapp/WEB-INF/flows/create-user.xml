@@ -18,7 +18,7 @@
 
         <transition on="yes" to="userCreated" >
             <set name="flashScope.message" value="resourceBundle.userCreated"/>
-            <attribute name="user" value="user"/>
+
         </transition>
         <transition on="no" to="createUserForm" >
             <set name="flashScope.message" value="resourceBundle.userExist"/>

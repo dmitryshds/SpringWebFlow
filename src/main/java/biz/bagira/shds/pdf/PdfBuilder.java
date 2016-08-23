@@ -1,5 +1,6 @@
 package biz.bagira.shds.pdf;
 
+import biz.bagira.shds.objects.User;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -13,9 +14,12 @@ import java.util.Map;
  */
 public class PdfBuilder extends AbstractPdfView {
     protected void buildPdfDocument(Map<String, Object> model, Document document, PdfWriter writer, HttpServletRequest request, HttpServletResponse response) throws Exception {
-     //   User user = (User) request.getAttribute("user");
-        System.out.println("USER = ");
-//        document.add(new Paragraph(user.getUsername()));
-        document.add(new Paragraph("Hi"));
+        User lastUser = (User) model.get("lastUser");
+
+        document.add(new Paragraph("Hi!!!  Last registered user is:"));
+        if (lastUser != null)
+        {
+             document.add(new Paragraph("User : "+lastUser.getUsername()));
+        }
     }
 }
